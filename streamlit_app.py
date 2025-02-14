@@ -69,6 +69,7 @@ def get_user_inputs():
         return {
             'h_min': st.slider("Minimum h (10^-k)", 1, 16, 1),
             'h_max': st.slider("Maximum h (10^-k)", 1, 16, 16),
+
             'num_points': st.slider("Number of points", 10, 100, 50),
             'eps': st.number_input("Machine epsilon (ε)", 1e-16, 1e-10, 2.22e-16, format="%e")
         }
@@ -76,6 +77,7 @@ def get_user_inputs():
 # --------------------------
 # Error Calculations
 # --------------------------
+@st.cache_data # Cache the results of expensive calculations for faster loading
 def calculate_errors(h_values: np.ndarray, eps: float) -> dict:
     """
     Calculate errors and bounds for both differentiation methods
@@ -91,33 +93,36 @@ def calculate_errors(h_values: np.ndarray, eps: float) -> dict:
         - Truncation error bounds
         - Rounding error bounds
     """
-    exact = np.cos(1.0)  # Exact derivative of sin(x) at x=1
-    results = {
-        'h': h_values,
-        'err1': [],
-        'err2': [],
-        'trunc1': [],
-        'trunc2': [],
-        'round1': [],
-        'round2': []
-    }
-    
-    for h in h_values:
-        # Forward difference calculations
-        f_plus = np.sin(1 + h)
-        approx1 = (f_plus - np.sin(1)) / h
-        results['err1'].append(abs(approx1 - exact))
-        results['trunc1'].append(h / 2)
-        results['round1'].append(2 * eps / h)
+    try:
+        exact = np.cos(1.0)  # Exact derivative of sin(x) at x=1
+        results = {
+            'h': h_values,
+            'err1': [],
+            'err2': [],
+            'trunc1': [],
+            'trunc2': [],
+            'round1': [],
+            'round2': []
+        }
         
-        # Central difference calculations
-        f_minus = np.sin(1 - h)
-        approx2 = (f_plus - f_minus) / (2 * h)
-        results['err2'].append(abs(approx2 - exact))
-        results['trunc2'].append(h**2 / 6)
-        results['round2'].append(eps / h)
-        
-    return results
+        for h in h_values:
+            # Forward difference calculations
+            f_plus = np.sin(1 + h)
+            approx1 = (f_plus - np.sin(1)) / h
+            results['err1'].append(abs(approx1 - exact))
+            results['trunc1'].append(h / 2)
+            results['round1'].append(2 * eps / h)
+            
+            # Central difference calculations
+            f_minus = np.sin(1 - h)
+            approx2 = (f_plus - f_minus) / (2 * h)
+            results['err2'].append(abs(approx2 - exact))
+            results['trunc2'].append(h**2 / 6)
+            results['round2'].append(eps / h)
+        return results
+    except Exception as e:
+        st.error(f"Error occurred during calculations: {e}")
+        return None
 
 # --------------------------
 # Visualization
