@@ -2,6 +2,8 @@
 
 ## Numerical Differentiation Error Analysis Web App
 
+Project is available on Streamlit at [Numerical Differentiation Analysis · Streamlit](https://math374p1.streamlit.app/)
+
 ## Overview
 
 This interactive web app is built with Streamlit and is designed to analyze and visualize errors in numerical differentiation methods. The project focuses on approximating the derivative of the function at using two common methods:
@@ -21,19 +23,11 @@ It then visualizes these errors on log-log plots so that you can see how they ch
 
 ## Features
 
-- **Interactive Controls:**  
-  Adjust the range for (expressed as ), the number of points, and the machine epsilon () via the sidebar.
-
-- **Theoretical Background:**  
-  An expandable section explains the mathematics behind the forward and central difference methods, including the expected orders of truncation and rounding errors.
-
-- **Visualization:**  
-  Log-log plots display the actual error, truncation error, and rounding error for each method, making the power-law relationships clear.
-
-- **Optimal Error Calculation:**  
-  The app computes and displays the optimal step size that minimizes the total error for both differentiation methods.
-
-- **Comparison Table:**  
+- **Interactive Controls:**Adjust the range for (expressed as ), the number of points, and the machine epsilon () via the sidebar.
+- **Theoretical Background:**An expandable section explains the mathematics behind the forward and central difference methods, including the expected orders of truncation and rounding errors.
+- **Visualization:**Log-log plots display the actual error, truncation error, and rounding error for each method, making the power-law relationships clear.
+- **Optimal Error Calculation:**The app computes and displays the optimal step size that minimizes the total error for both differentiation methods.
+- **Comparison Table:**
   A summary comparing the properties of the forward and central difference methods is provided.
 
 ---
@@ -63,18 +57,14 @@ pip install numpy matplotlib streamlit
 
 ## Usage
 
-1. **Download the Repository:**  
-   Save the provided code
+1. **Download the Repository:**Save the provided code
+2. **Run the Application:**Open a terminal, navigate to the directory containing `streamlit_app`, and run:
 
-2. **Run the Application:**  
-   Open a terminal, navigate to the directory containing `streamlit_app`, and run:
-   
    ```bash
    streamlit run streamlit_app.py
    ```
-
 3. **Interact with the App:**
-   
+
    - Use the sidebar to set the minimum and maximum exponent for (e.g., ), choose the number of points, and adjust the machine epsilon.
    - View the log-log plots that display the actual error, truncation error, and rounding error for both the forward and central difference methods.
    - Expand the "Theoretical Background" section to review the underlying mathematics.
