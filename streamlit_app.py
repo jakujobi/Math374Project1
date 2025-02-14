@@ -5,6 +5,7 @@ Author: John Akujobi
 Course: Math 374 - Scientific Computing
 Date: Spring 2024
 
+
 This Streamlit app analyzes and visualizes errors in numerical differentiation methods
 for f(x) = sin(x) at x = 1, comparing forward and central difference formulas.
 """
