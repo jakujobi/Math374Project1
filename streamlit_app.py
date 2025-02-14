@@ -30,8 +30,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Title and introduction
-st.title("Numerical Differentiation Error Analysis")
+st.title("John Akujobi - Math 374 Project 1 - Numerical Differentiation Error Analysis")
 st.markdown("""
+# **Project Overview:**
+This project aims to analyze the errors in numerical differentiation using forward and central difference formulas.
+We will explore the impact of truncation and rounding errors on the accuracy of these methods.
+    
 **Analyzing Forward and Central Difference Formulas for f(x) = sin(x) at x = 1**
 """)
 
