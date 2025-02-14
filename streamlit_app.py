@@ -42,17 +42,21 @@ def show_theory():
         with col1:
             st.markdown(r"""
             **Forward Difference (Formula 1):**
-            \[ f'(x) \approx \frac{f(x+h) - f(x)}{h} \]
-            - Truncation error: \( O(h) \)
-            - Rounding error: \( O(\epsilon/h) \)
+
+            $f'(x) \approx \frac{f(x+h) - f(x)}{h}$
+
+            - Truncation error: $O(h)$
+            - Rounding error: $O(\epsilon/h)$
             """)
             
         with col2:
             st.markdown(r"""
             **Central Difference (Formula 2):**
-            \[ f'(x) \approx \frac{f(x+h) - f(x-h)}{2h} \]
-            - Truncation error: \( O(h^2) \)
-            - Rounding error: \( O(\epsilon/h) \)
+
+            $f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}$
+
+            - Truncation error: $O(h^2)$
+            - Rounding error: $O(\epsilon/h)$
             """)
 
 # --------------------------
@@ -206,7 +210,19 @@ def main():
     
     # Show comparison table
     st.header("Comparison of Methods")
-    # ... (keep your comparison table code here) ...
+    st.markdown("""
+    | Aspect                | Forward Difference | Central Difference |
+    |-----------------------|--------------------|--------------------|
+    | Truncation Error Order | O(h)               | O(h²)              |
+    | Rounding Error Order   | O(ε/h)             | O(ε/h)             |
+    | Optimal h             | ~√ε                | ~∛ε                |
+    | Best Accuracy         | ~√ε                | ~ε^{2/3}           |
+    | Stability             | Moderate           | Better             |
 
+    **Key Observations:**
+    1. Central difference provides better accuracy for same h
+    2. Central difference maintains stability for larger h values
+    3. Forward difference deteriorates faster for small h
+    """)
 if __name__ == "__main__":
     main()
