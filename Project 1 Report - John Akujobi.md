@@ -1,5 +1,3 @@
-# Project Report
-
 ## **Numerical Differentiation Error Analysis Web App**
 
 ## **Author**: John Akujobi
@@ -36,13 +34,9 @@ Study and compare the two formulas for $f(x) = \sin x$ and $x = 1$ as $h \to 0$.
 ---
 
 ## 1. Introduction
-
 Through a DuckDuckGo search, I found out that the two numerical differentiation methods were called:
-
 1. the forward difference formula
-
 2. the central difference formula.
-
 
 
 First we need to explore them and approximate the derivative of the function
