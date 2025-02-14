@@ -182,14 +182,19 @@ def calculate_optimal_values(eps: float) -> dict:
 def main():
     # Initialize application
     configure_page()
-    st.title("John Akujobi - Math 374 Project 1 - Numerical Differentiation Error Analysis")
-    st.markdown("""... (keep your project overview text here) ...""")
+    st.title("Math 374 Project 1 - John Akujobi")
+    st.markdown("""
+## Numerical Differentiation Error Analysis
+This 
+
+""")
     
     # Show theory section
     show_theory()
     
     # Get user inputs
     inputs = get_user_inputs()
+    eps = inputs['eps']
     
     # Generate h values and calculate errors
     h_values = np.logspace(-inputs['h_max'], -inputs['h_min'], inputs['num_points'])
@@ -206,8 +211,29 @@ def main():
     # Show optimal values
     optimal = calculate_optimal_values(inputs['eps'])
     st.header("Detailed Error Analysis")
-    # ... (keep your optimal values display code here) ...
-    
+    # Optimal h calculations
+    opt_h1 = (2*eps)**0.5
+    opt_h2 = (3*eps)**(1/3)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(rf"""
+        **Forward Difference Optimal h:**
+        
+        $h_{{\mathrm{{opt}}}} = \sqrt{{2\epsilon}} \approx {opt_h1:.2e}$
+        
+        - Minimum achievable error: {np.sqrt(2*eps)/2:.2e}
+        """)
+
+    with col2:
+        st.markdown(rf"""
+        **Central Difference Optimal h:**
+        
+        $h_{{\mathrm{{opt}}}} = \sqrt[3]{{3\epsilon}} \approx {opt_h2:.2e}$
+        
+        - Minimum achievable error: {(3*eps)**(2/3)/6:.2e}
+        """)    
+
     # Show comparison table
     st.header("Comparison of Methods")
     st.markdown("""
