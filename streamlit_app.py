@@ -261,15 +261,14 @@ This
    # Project Report
     st.header("Project Report")
     st.markdown(rf"""
-# Project Report
+### **Numerical Differentiation Error Analysis Web App**
 
-## **Numerical Differentiation Error Analysis Web App**
+### **Author**: John Akujobi
 
-## **Author**: John Akujobi
+### **Course**: Math 374  Scientific Computing
 
-## **Course**: Math 374 – Scientific Computing
+### Date: Spring 2024
 
-## Date: Spring 2024
 """)
     st.markdown("""
 ---
