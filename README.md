@@ -79,7 +79,7 @@ flowchart TB
 - **`Report()`** - Renders expandable project documentation sections
 - **`main()`** - Application orchestration and flow control
 
-See [DEVELOPMENT.md](docs/DEVELOPMENT.md) for architecture details.
+See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for detailed architecture and development guide.
 
 ## Quick Start
 

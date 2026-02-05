@@ -25,8 +25,7 @@ Math374Project1/
 ├── Screenshot 2025-02-14 012749.png    # App screenshot 1
 ├── Screenshot 2025-02-14 013149.png    # App screenshot 2
 ├── docs/
-│   ├── DEVELOPMENT.md        # This file
-│   └── ARCHITECTURE.md       # System architecture (TODO)
+│   └── DEVELOPMENT.md        # This file (includes architecture)
 ├── .devcontainer/
 │   └── devcontainer.json     # GitHub Codespaces config
 ├── .github/
