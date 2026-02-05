@@ -2,7 +2,7 @@
 
 A scientific computing web application that analyzes and visualizes errors in numerical differentiation methods.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://math374p1.streamlit.app/) 
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://math374p1.streamlit.app/)
 [![License: HL3](https://img.shields.io/badge/License-Hippocratic%203.0-blue)](LICENSE.md)
 [![Python](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.54+-red.svg)](https://streamlit.io)
@@ -46,19 +46,19 @@ flowchart TB
         Sidebar[Sidebar Controls]
         Theory[Theory Expanders]
     end
-    
+  
     subgraph Core Logic
         Config[configure_page]
         Input[get_user_inputs]
         Calc[calculate_errors]
         Opt[calculate_optimal_values]
     end
-    
+  
     subgraph Visualization
         Plot[create_error_plot]
         MPL[Matplotlib Backend]
     end
-    
+  
     UI --> Config
     Sidebar --> Input
     Input --> Calc
@@ -71,6 +71,7 @@ flowchart TB
 ```
 
 **Component Responsibilities:**
+
 - **`configure_page()`** - Page setup, CSS styling, MathJax loading
 - **`get_user_inputs()`** - Sidebar controls for h range, points, epsilon
 - **`calculate_errors()`** - Computes actual errors and theoretical bounds (cached with `@st.cache_data`)
@@ -121,21 +122,23 @@ This project is configured for GitHub Codespaces with automatic setup:
 
 Use the sidebar to configure parameters:
 
-| Control | Range | Default | Purpose |
-|---------|-------|---------|---------|
-| Minimum h (10^-k) | 1-16 | 1 | Sets h_min = 10^-1 |
-| Maximum h (10^-k) | 1-16 | 16 | Sets h_max = 10^-16 |
-| Number of points | 10-100 | 50 | Data points between h_min and h_max |
-| Machine epsilon (ε) | 1e-16 to 1e-10 | 2.22e-16 | Rounding error parameter |
+| Control              | Range          | Default  | Purpose                             |
+| -------------------- | -------------- | -------- | ----------------------------------- |
+| Minimum h (10^-k)    | 1-16           | 1        | Sets h_min = 10^-1                  |
+| Maximum h (10^-k)    | 1-16           | 16       | Sets h_max = 10^-16                 |
+| Number of points     | 10-100         | 50       | Data points between h_min and h_max |
+| Machine epsilon (ε) | 1e-16 to 1e-10 | 2.22e-16 | Rounding error parameter            |
 
 ### Understanding the Output
 
 **Error Plots:**
+
 - **Blue line** - Actual error measured from numerical computation
 - **Red dashed** - Truncation error bound (O(h) forward, O(h²) central)
 - **Green dashed** - Rounding error bound (O(ε/h))
 
 **Optimal Values:**
+
 - **Forward difference:** h_opt ≈ √(2ε) ≈ 2.11e-08
 - **Central difference:** h_opt ≈ ∛(3ε) ≈ 8.73e-06
 
@@ -175,6 +178,7 @@ print(f'✓ Central h_opt: {optimal[\"central\"][\"h_opt\"]:.2e}')
 ```
 
 Expected output:
+
 ```
 ✓ Imports successful
 ✓ Calculated 50 data points
@@ -184,8 +188,8 @@ Expected output:
 
 ## Project Status
 
-**Current Version:** 1.0 (Spring 2024)  
-**Status:** ✅ Complete - Academic project submission
+**Current Version:** 1.0 (Spring 2024)
+**Status:** Complete - Academic project submission
 
 This was developed as a course project and is not actively maintained for new features. Pull requests for bug fixes are welcome.
 
@@ -193,15 +197,15 @@ This was developed as a course project and is not actively maintained for new fe
 
 This project showcases technical skills relevant to scientific computing and software engineering:
 
-| Skill Area | Implementation | Code Reference |
-|------------|----------------|----------------|
-| **Numerical Methods** | Taylor series error analysis, finite difference methods | [`calculate_errors()`](streamlit_app.py#L62-L106) |
-| **Scientific Computing** | NumPy array operations, error propagation, floating-point arithmetic | [`streamlit_app.py`](streamlit_app.py#L13-L15) |
-| **Data Visualization** | Log-log plots, matplotlib customization, comparative analysis | [`create_error_plot()`](streamlit_app.py#L111-L139) |
-| **Web Development** | Streamlit app architecture, responsive UI, LaTeX rendering | [`configure_page()`](streamlit_app.py#L20-L33) |
-| **Performance Optimization** | Caching expensive computations with `@st.cache_data` | [`calculate_errors()`](streamlit_app.py#L61) |
-| **Documentation** | Mathematical exposition, interactive documentation | [`Report()`](streamlit_app.py#L165-L465) |
-| **DevOps** | Streamlit Cloud deployment, GitHub Codespaces config | [`.devcontainer/`](.devcontainer/devcontainer.json) |
+| Skill Area                         | Implementation                                                       | Code Reference                                     |
+| ---------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------- |
+| **Numerical Methods**        | Taylor series error analysis, finite difference methods              | [`calculate_errors()`](streamlit_app.py#L62-L106)   |
+| **Scientific Computing**     | NumPy array operations, error propagation, floating-point arithmetic | [`streamlit_app.py`](streamlit_app.py#L13-L15)      |
+| **Data Visualization**       | Log-log plots, matplotlib customization, comparative analysis        | [`create_error_plot()`](streamlit_app.py#L111-L139) |
+| **Web Development**          | Streamlit app architecture, responsive UI, LaTeX rendering           | [`configure_page()`](streamlit_app.py#L20-L33)      |
+| **Performance Optimization** | Caching expensive computations with `@st.cache_data`               | [`calculate_errors()`](streamlit_app.py#L61)        |
+| **Documentation**            | Mathematical exposition, interactive documentation                   | [`Report()`](streamlit_app.py#L165-L465)            |
+| **DevOps**                   | Streamlit Cloud deployment, GitHub Codespaces config                 | [`.devcontainer/`](.devcontainer/devcontainer.json) |
 
 ## Contributing
 
@@ -215,8 +219,8 @@ The Hippocratic License is an ethical source license that specifically prohibits
 
 ## Author
 
-**John Akujobi**  
-Math 374 - Scientific Computing  
+**John Akujobi**
+Math 374 - Scientific Computing
 Spring 2024
 
 ## Acknowledgments
